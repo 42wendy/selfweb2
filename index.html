@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f5f5f3" />
+  <meta name="description" content="李沐泽 Wendy Li 的交互式个人履历" />
+  <title>李沐泽 · Wendy Li</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="refinements.css" />
+</head>
+<body>
+  <main class="scene" id="home">
+    <h1 class="name">李沐泽<span>Wendy Li</span></h1>
+    <svg class="svg-defs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <symbol id="blade-shape" viewBox="0 0 160 110">
+        <path fill="currentColor" d="M5 42 C34 38 55 28 83 19 L138 10 Q149 9 152 19 L155 82 Q156 91 145 93 L91 79 C58 69 31 60 5 56 Z" />
+      </symbol>
+    </svg>
+    <div class="fan" aria-label="经历风扇：点击扇叶查看经历，按住页面鼠标左键吹动扇叶">
+      <div class="head">
+        <div class="rotor" id="rotor">
+          <div class="blade-slot" style="--angle: -90deg"><button class="blade" type="button" data-key="product" aria-label="查看产品运营经历"><svg class="blade-art" viewBox="0 0 160 110"><use href="#blade-shape" /></svg><span>01</span></button></div>
+          <div class="blade-slot" style="--angle: -18deg"><button class="blade" type="button" data-key="visual" aria-label="查看视觉创作经历"><svg class="blade-art" viewBox="0 0 160 110"><use href="#blade-shape" /></svg><span>02</span></button></div>
+          <div class="blade-slot" style="--angle: 54deg"><button class="blade" type="button" data-key="field" aria-label="查看工程现场经历"><svg class="blade-art" viewBox="0 0 160 110"><use href="#blade-shape" /></svg><span>03</span></button></div>
+          <div class="blade-slot" style="--angle: 126deg"><button class="blade" type="button" data-key="education" aria-label="查看教育背景"><svg class="blade-art" viewBox="0 0 160 110"><use href="#blade-shape" /></svg><span>04</span></button></div>
+          <div class="blade-slot" style="--angle: 198deg"><button class="blade" type="button" data-key="tools" aria-label="查看能力工具"><svg class="blade-art" viewBox="0 0 160 110"><use href="#blade-shape" /></svg><span>05</span></button></div>
+        </div>
+        <div class="head-ring" aria-hidden="true"></div>
+        <div class="hub" aria-hidden="true"><span></span></div>
+      </div>
+      <div class="neck" aria-hidden="true"></div>
+      <div class="body" aria-hidden="true"><span></span><i></i><i></i><i></i></div>
+      <div class="pole" aria-hidden="true"></div>
+      <div class="base" aria-hidden="true"></div>
+    </div>
+    <svg class="power-cable" id="powerCable" aria-hidden="true"><path id="cablePath" /></svg>
+    <div class="plug" id="plug" role="button" tabindex="0" aria-label="拖动插头插入插座，或按回车接通电源">
+      <span class="plug-body"></span><i></i><i></i>
+    </div>
+    <div class="socket-card" id="socketCard" aria-label="把插头拖到这里通电">
+      <div class="socket">
+        <span class="socket-hole socket-hole-left"></span>
+        <span class="socket-hole socket-hole-right"></span>
+      </div>
+    </div>
+    <p class="power-hint" id="powerHint" aria-live="polite">拖动插头接通电源，再按住页面吹风</p>
+    <div class="wind-trails" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="blade-tip" id="bladeTip" hidden></div>
+    <aside class="contact-reveal" id="contactReveal" aria-live="polite" hidden>
+      <span class="contact-kicker">CONTACT / 吹出来的联系方式</span>
+      <a class="contact-row contact-phone" href="tel:69189742"><small>PHONE / 01</small><strong>69189742</strong></a>
+      <a class="contact-row contact-email" href="mailto:muzeli@ln.hk"><small>EMAIL / 02</small><strong>muzeli@ln.hk</strong></a>
+    </aside>
+    <aside class="experience" id="experience" aria-live="polite" hidden>
+      <button class="close" id="close" type="button" aria-label="收起经历">×</button>
+      <div class="experience-inner">
+        <p class="number" id="detailNumber"></p>
+        <p class="period" id="detailPeriod"></p>
+        <h2 id="detailTitle"></h2>
+        <p class="description" id="detailDescription"></p>
+        <div class="tags" id="detailTags"></div>
+      </div>
+    </aside>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

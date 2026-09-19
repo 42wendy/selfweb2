@@ -1,0 +1,115 @@
+/* Interaction details stay separate from the fan's basic silhouette. */
+body.blowing .wind-trails{opacity:var(--wind-opacity,.25)}
+body.blowing .wind-trails i{animation-duration:var(--wind-duration,.8s)}
+
+.power-cable{position:absolute;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;overflow:visible}
+.power-cable path{fill:none;stroke:#4a4a48;stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.plug{position:absolute;z-index:9;left:73%;top:86%;width:48px;height:34px;cursor:grab;touch-action:none;user-select:none;transition:filter .15s ease}
+.plug::before{content:"";position:absolute;inset:0;background:#c7c7c5;clip-path:polygon(0 25%,22% 8%,76% 4%,100% 22%,100% 78%,76% 96%,22% 92%,0 75%)}
+.plug:active,.plug.dragging{cursor:grabbing;filter:brightness(.85)}
+.plug-body{position:absolute;left:8px;top:6px;width:28px;height:22px;background:#e3e3e1;clip-path:polygon(0 12%,79% 0,100% 18%,100% 82%,79% 100%,0 88%)}
+.plug i{position:absolute;right:-12px;width:14px;height:3px;border-radius:2px;background:#424240}
+.plug i:nth-of-type(1){top:9px}
+.plug i:nth-of-type(2){top:22px}
+.plug:focus-visible{outline:2px solid #333;outline-offset:5px}
+.socket-card{position:absolute;z-index:3;right:clamp(35px,8vw,120px);bottom:8%;width:56px;height:56px;padding:2px;border:1px solid #c9c9c6;background:#e6e6e3;transition:background .25s ease,transform .25s ease}
+.socket{position:relative;width:100%;height:100%;border:1px solid #b9b9b6;background:#f4f4f1}
+.socket-hole{position:absolute;display:block;top:39%;width:4px;height:10px;background:#393938}
+.socket-hole-left{left:34%}.socket-hole-right{right:34%}
+.power-hint{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.socket-card.ready,.scene.needs-power .socket-card{animation:socket-nudge .45s ease;background:#cbcbc8}
+.scene.powered .socket-card{background:#d1d1ce}
+.scene.powered .plug{opacity:0;pointer-events:none}
+.scene.powered .socket-hole{opacity:0}
+.scene.powered .socket::after{content:"";position:absolute;left:25%;top:32%;width:57%;height:36%;background:#a9a9a6;clip-path:polygon(0 20%,20% 0,85% 0,100% 22%,100% 78%,85% 100%,20% 100%,0 80%)}
+.scene.powered .body i:nth-of-type(1){width:8px;height:8px;top:22%;background:#22d46f;box-shadow:0 0 0 2px #22d46f44,0 0 9px #22d46f;transition:background .15s ease,box-shadow .15s ease}
+body.blowing .scene.powered .body i:nth-of-type(1){background:#b8f0ff;box-shadow:0 0 0 3px #b8f0ff66,0 0 13px #b8f0ff}
+@keyframes socket-nudge{0%,100%{transform:translateX(0)}35%{transform:translateX(-5px)}70%{transform:translateX(3px)}}
+
+.head{background:#f1f1ef;box-shadow:none}
+.head-ring{border-color:#d3d3d0}
+.blade-art{filter:none}
+.hub{width:28%;border:0;background:#f8f8f7;box-shadow:none}
+.hub::before{content:none}
+.hub span{width:18%;background:#d1d1cf;box-shadow:none}
+.neck{background:#d6d6d3}
+.body{background:#e7e7e4;box-shadow:none}
+.body span{background:#383838}
+.pole{background:#dededb;box-shadow:none}
+.base{background:#dededb;box-shadow:none}
+
+.experience{
+  padding:25px 27px 27px;
+  border:1px solid #c7c7c4;
+  background:#fbfbfa;
+  box-shadow:8px 9px 0 #e0e0dd;
+}
+.experience::before{
+  content:"PERSONAL ARCHIVE / 2026";
+  position:absolute;
+  right:27px;
+  top:27px;
+  font:9px Arial,sans-serif;
+  letter-spacing:.12em;
+  color:#999;
+}
+.experience .close{right:25px;top:51px}
+.experience .number{margin-bottom:53px;font-variant-numeric:tabular-nums}
+.experience[data-key="visual"]{border-radius:2px 16px 2px 2px}
+.experience[data-key="visual"]::before{content:"VISUAL ARCHIVE / 2026"}
+.experience[data-key="field"]::before{content:"FIELD NOTE / 2026"}
+.experience[data-key="product"]::before{content:"PRODUCT NOTE / 2026"}
+
+.contact-reveal{perspective:800px}
+.contact-kicker{margin-bottom:18px}
+.contact-row{
+  position:relative;
+  width:97%;
+  margin-bottom:15px;
+  padding:18px 19px 20px;
+  border:1px solid #bcbcb9;
+  background:#fdfdfc;
+  box-shadow:5px 6px 0 #dfdfdc;
+}
+.contact-row small{font-size:10px}
+.contact-phone{rotate:-.8deg}
+.contact-phone::after{
+  content:"";
+  position:absolute;
+  top:17px;
+  right:18px;
+  width:76px;
+  height:5px;
+  background:repeating-linear-gradient(90deg,#aaa 0 1px,transparent 1px 11px);
+}
+.contact-email{rotate:1.2deg;border-radius:2px 14px 2px 2px}
+.contact-email::after{
+  content:"";
+  position:absolute;
+  right:21px;
+  top:16px;
+  width:24px;
+  height:12px;
+  border-top:1px solid #aaa;
+  border-radius:50%;
+  transform:rotate(-18deg);
+}
+
+@media(max-width:950px){
+  .experience{padding:22px 23px}
+  .experience::before{right:23px;top:23px}
+  .experience .close{right:22px;top:47px}
+  .socket-card{right:5%;bottom:8%;width:54px;height:54px}
+}
+@media(max-width:650px){
+  .experience{border-left:0;border-right:0;border-bottom:0;box-shadow:0 -10px 25px #00000012}
+  .experience .number{margin-bottom:22px}
+  .contact-row{width:100%;margin-bottom:9px;padding:13px 15px}
+  .contact-row strong{font-size:21px}
+  .plug{left:58%;top:86%;width:42px;height:30px}
+  .plug-body{height:18px}
+  .plug i:nth-of-type(2){top:20px}
+  .socket-card{right:5%;bottom:7%;width:52px;height:52px;padding:2px}
+  .socket-hole{height:9px;width:4px}
+}
+@media(prefers-reduced-motion:reduce){.socket-card,.scene.powered .body i:nth-of-type(1){animation:none;transition:none}}
